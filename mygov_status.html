@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MyGov Status Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.6; }
+    h1, h2, h3 { color: #003366; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    table, th, td { border: 1px solid #999; padding: 0.5rem; }
+    th { background-color: #f2f2f2; }
+    th, td { text-align: center; }
+    ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+    .section { margin-bottom: 2rem; }
+    .note { font-style: italic; margin-top: 0.5rem; }
+    .print-button { margin-bottom: 1rem; padding: 0.5rem 1rem; background-color: #003366; color: white; border: none; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <!-- Include constants.js which sets window.MyGovData -->
+  <script src="./constants.js"></script>
+
+  <button class="print-button" onclick="window.print()">Print Report</button>
+
+  <h1>MyGov Status Report as on {{reportDate}}</h1>
+
+  <div class="section">
+    <p>Hon'ble Prime Minister Shri {{primeMinisterName}} launched MyGov on {{launchDate}}. MyGov now has more than {{registeredUsers}} Saathis (registered users). Owing to its interactive engagement with citizens, almost every government department uses the MyGov platform for citizen involvement, policy consultations and dissemination of information to citizens about various government schemes and programs.</p>
+    <p>MyGov has adopted multiple engagement methodologies like discussions, tasks, polls, surveys, blogs, talks, quizzes, innovate activities and on-ground activities by innovatively using the internet, mobile apps, IVRS, SMS, outbound dialing (OBD) technologies, AI Chatbot etc.</p>
+    <p>With the username <strong>@MyGovIndia</strong>, MyGov is one of the most active profiles on social media, including Twitter, Facebook, Instagram, YouTube, and LinkedIn. In this FY, MyGov has already achieved a growth of <strong>{{growthPercent}}%</strong>.</p>
+  </div>
+
+  <div class="section">
+    <h2>1. User count</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>User count as of 1st April 2023</th>
+          <th>User count as of {{reportDate}}</th>
+          <th>Increase in count</th>
+          <th>% Increase in count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>{{userCount2023}}</td>
+          <td>{{userCount2025}}</td>
+          <td>{{increaseInCount}}</td>
+          <td>{{growthPercent}}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>2. Activities conducted and citizen participation to date</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Activity</th>
+          <th>Count</th>
+          <th>Submissions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Do Task</td><td>{{doTaskCount}}</td><td>{{doTaskSubmissions}}</td></tr>
+        <tr><td>2</td><td>Discuss</td><td>{{discussCount}}</td><td>{{discussSubmissions}}</td></tr>
+        <tr><td>3</td><td>Quiz</td><td>{{quizCount}}</td><td>{{quizSubmissions}}</td></tr>
+        <tr><td>4</td><td>Poll/Survey</td><td>{{pollCount}}</td><td>{{pollSubmissions}}</td></tr>
+        <tr><td>5</td><td>Pledge</td><td>{{pledgeCount}}</td><td>{{pledgeSubmissions}}</td></tr>
+      </tbody>
+    </table>
+    <p class="note">(Data as on {{reportDate}})</p>
+  </div>
+
+  <div class="section">
+    <h2>3. State Instances</h2>
+    <p>MyGov has also launched State instances in 24 States and UTs, namely {{stateInstancesList}}.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. Social Media Coverage</h2>
+    <p>MyGov has significant achievements on social media. Below are the metrics</p>
+    <ul>
+      <li>WhatsApp: {{whatsappFollowers}}</li>
+      <li>Facebook: {{facebookFollowers}}</li>
+      <li>Twitter: {{twitterFollowers}}</li>
+      <li>Instagram: {{instagramFollowers}}</li>
+      <li>Telegram: {{telegramFollowers}}</li>
+      <li>YouTube: {{youtubeFollowers}}</li>
+      <li>LinkedIn: {{linkedinFollowers}}</li>
+      <li>Pinterest: {{pinterestFollowers}}</li>
+      <li>Roposo: {{roposoFollowers}}</li>
+      <li>Chingari: {{chingariFollowers}}</li>
+      <li>ShareChat: {{sharechatFollowers}}</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>5. MyGov Initiatives</h2>
+    <ol>
+      <li>To mitigate language as a barrier and encourage regional outreach, MyGov has taken initiative for Content Localization through software in English and 11 Indian languages including {{localizationLanguages}}.</li>
+      <li>MyGov has its presence in social media in English and 12 Indian languages i.e. in {{socialMediaLanguages}}, enabling citizens to stay updated in the given languages.</li>
+    </ol>
+  </div>
+
+  <!-- Placeholder replacement script -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.innerHTML = document.body.innerHTML.replace(/\{\{(.*?)\}\}/g, (_, key) => {
+        return window.MyGovData && window.MyGovData[key.trim()] || '';
+      });
+    });
+  </script>
+</body>
+</html>
